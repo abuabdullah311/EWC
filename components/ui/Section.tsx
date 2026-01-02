@@ -17,7 +17,8 @@ export const Section: React.FC<SectionProps> = ({
 
   return (
     <section id={id} className={`py-20 md:py-28 ${bgClass} ${className}`}>
-      <div className="container mx-auto px-6 max-w-6xl">
+      {/* ✅ Center all text by default */}
+      <div className="container mx-auto px-6 max-w-6xl text-center">
         {children}
       </div>
     </section>

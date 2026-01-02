@@ -1,5 +1,5 @@
 import {
-  Users, Globe, Trophy, Award, Rocket, Target, Zap,
+  Users, Globe, Trophy, Rocket, Target, Zap,
   Briefcase, TrendingUp, Handshake, Plane, MapPin,
   GraduationCap, Cpu, Factory, Droplets, Gamepad2
 } from 'lucide-react';
@@ -17,10 +17,17 @@ export const HERO_CONTENT = {
 };
 
 /**
- * ✅ Use LOCAL logo hosted in Vite public folder
+ * ✅ Local EWC Logo (Vite public folder)
  * Put file at: /public/assets/logos/EWC_Dark_Grey.png
  */
 export const EWC_LOGO = "/assets/logos/EWC_Dark_Grey.png";
+
+/**
+ * ✅ Road to Riyadh section image (LOCAL RECOMMENDED)
+ * Put file at: /public/assets/images/riyadh-finals.jpg (or .png)
+ * Then update path below if you change the name
+ */
+export const RIYADH_FINALS_IMAGE = "/assets/images/riyadh-finals.jpg";
 
 export const VALUE_PROPOSITION: BenefitCard[] = [
   {
@@ -171,26 +178,25 @@ export const GLOBAL_FINALS_BENEFITS = [
 ];
 
 /**
- * ✅ Best practice for partner logos:
- * Put all partner logos under /public/assets/logos/
- * Then reference them as "/assets/logos/<file>.png"
- *
- * For now, I kept GEN/Misk/Monsha'at as remote links unless you upload them locally too.
+ * ✅ Hosts logos (LOCAL is best for stability)
+ * If you add local files, set useLocalLogos=true and put them in /public/assets/logos/
  */
+const useLocalLogos = true;
+
 export const HOSTS = {
   global: [
     {
       name: "Global Entrepreneurship Network (GEN)",
-      logo: "https://genglobal.org/sites/default/files/GEN_Logo_Full_Color.png"
+      logo: useLocalLogos ? "/assets/logos/Global Entrepreneurship Network.png" : "https://genglobal.org/sites/default/files/GEN_Logo_Full_Color.png"
     },
     {
       name: "Monsha'at",
-      logo: "https://www.monshaat.gov.sa/themes/custom/monshaat/logo.svg"
+      logo: useLocalLogos ? "/assets/logos/monshaat_logo_Full.png" : "https://www.monshaat.gov.sa/themes/custom/monshaat/logo.svg"
     }
   ],
   founding: {
     name: "Misk Foundation",
-    logo: "https://misk.org.sa/wp-content/themes/misk/assets/img/logo.svg"
+    logo: useLocalLogos ? "/assets/logos/Misk_Brandmark Artwork_English Led_RGB.png" : "https://misk.org.sa/wp-content/themes/misk/assets/img/logo.svg"
   },
   partners: "Strategic & Ecosystem Partners"
 };

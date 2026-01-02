@@ -3,13 +3,15 @@ import {
   ChevronRight, ArrowRight, CheckCircle2, QrCode, 
   MapPin, Calendar, Globe, Trophy
 } from 'lucide-react';
+
 import { Button } from './components/ui/Button';
 import { Section } from './components/ui/Section';
 import { Ident } from './components/Ident';
+
 import { 
   HERO_CONTENT, VALUE_PROPOSITION, ELIGIBILITY, 
   PRIZE_POOL_TOTAL, PRIZE_TIERS, AI_TRACK_PRIZES, TIMELINE, 
-  GLOBAL_FINALS_BENEFITS, HOSTS, EWC_LOGO, RIYADH_FINALS_IMAGE
+  GLOBAL_FINALS_BENEFITS, EWC_LOGO, RIYADH_FINALS_IMAGE
 } from './constants';
 
 const App = () => {
@@ -158,8 +160,8 @@ const App = () => {
             <p className="text-2xl md:text-3xl text-gray-800 font-medium mb-10">Total Cash Prize Pool for 2026</p>
             
             <div className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#E6F4F1] text-[#0F5A4F] shadow-sm border border-[#0F5A4F]/10 hover:bg-[#D4EBE7] transition-colors">
-               <CheckCircle2 className="w-6 h-6" />
-               <span className="font-bold tracking-wider uppercase text-base">100% Equity Free</span>
+              <CheckCircle2 className="w-6 h-6" />
+              <span className="font-bold tracking-wider uppercase text-base">100% Equity Free</span>
             </div>
           </div>
         </div>
@@ -272,7 +274,6 @@ const App = () => {
           
           <div className="lg:w-1/2 relative w-full">
             <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border-[6px] border-white group">
-              {/* Riyadh Event Image (NOW FROM CONSTANTS) */}
               <img 
                 src={RIYADH_FINALS_IMAGE}
                 alt="EWC Global Finals in Riyadh" 
@@ -318,60 +319,9 @@ const App = () => {
         </div>
       </section>
 
-      {/* SECTION 9: FOOTER */}
+      {/* SECTION 9: FOOTER (NO PARTNERS) */}
       <footer className="bg-white pt-20 pb-12 border-t border-gray-100">
         <div className="container mx-auto px-6 max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-20 text-center md:text-left">
-            {/* Global Hosts */}
-            <div>
-              <h4 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-8">Global Hosts</h4>
-              <div className="flex flex-col gap-6 items-center md:items-start">
-                {HOSTS.global.map((host, idx) => (
-                  <img 
-                    key={idx} 
-                    src={host.logo} 
-                    alt={host.name} 
-                    className="h-12 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" 
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                      const span = document.createElement('span');
-                      span.innerText = host.name;
-                      span.className = "text-xl font-bold text-gray-900";
-                      e.currentTarget.parentElement?.appendChild(span);
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Strategic Partners */}
-            <div>
-              <h4 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-8">Partners</h4>
-              <div className="flex flex-col gap-4">
-                <span className="text-gray-600 font-medium text-lg">{HOSTS.partners}</span>
-              </div>
-            </div>
-
-            {/* Founding Partner */}
-            <div>
-              <h4 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-8">Founding Partner</h4>
-              <div className="flex flex-col gap-6 items-center md:items-start">
-                <img 
-                  src={HOSTS.founding.logo} 
-                  alt={HOSTS.founding.name} 
-                  className="h-14 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" 
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                    const span = document.createElement('span');
-                    span.innerText = HOSTS.founding.name;
-                    span.className = "text-xl font-bold text-gray-900";
-                    e.currentTarget.parentElement?.appendChild(span);
-                  }}
-                />
-              </div>
-            </div>
-          </div>
-
           <div className="border-t border-gray-100 pt-10 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
             <p>&copy; Entrepreneurship World Cup. All rights reserved.</p>
           </div>

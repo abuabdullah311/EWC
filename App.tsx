@@ -128,14 +128,17 @@ const App = () => {
                 <item.icon size={28} />
               </div>
               <h3 className="text-2xl font-bold font-heading mb-6 text-gray-900">{item.title}</h3>
-              <ul className="space-y-4 text-center">
+
+              {/* ✅ fully centered bullets (icon + text) */}
+              <ul className="space-y-4">
                 {item.criteria.map((criterion, cIdx) => (
-                  <li key={cIdx} className="flex items-start gap-4 text-gray-600 justify-center">
+                  <li key={cIdx} className="flex items-start justify-center gap-3 text-gray-600">
                     <span className="mt-2 w-2 h-2 rounded-full bg-[#1292B7] flex-shrink-0" />
-                    <span className="text-base font-medium leading-relaxed">{criterion}</span>
+                    <span className="text-base font-medium leading-relaxed text-center">{criterion}</span>
                   </li>
                 ))}
               </ul>
+
             </div>
           ))}
         </div>
@@ -246,9 +249,10 @@ const App = () => {
       <Section className="relative overflow-hidden" background="gray">
         <div className="absolute top-0 right-0 w-[800px] h-full bg-white skew-x-12 transform translate-x-40 pointer-events-none opacity-50 lg:opacity-100"></div>
         
-        <div className="flex flex-col lg:flex-row items-center gap-20 relative z-10 text-center lg:text-left">
+        {/* ✅ removed lg:text-left to keep everything centered */}
+        <div className="flex flex-col lg:flex-row items-center gap-20 relative z-10 text-center">
           {/* left column */}
-          <div className="lg:w-1/2 text-center">
+          <div className="lg:w-1/2">
             <h2 className="text-3xl md:text-5xl font-bold font-heading mb-8 tracking-tight">
               The Road to Riyadh
             </h2>
@@ -256,16 +260,15 @@ const App = () => {
               The top 100 startups selected from the EWC Virtual Bootcamp advance to the next round of the competition and receive free travel to Riyadh, Saudi Arabia, for the EWC Global Finals.
             </p>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
+            {/* ✅ centered list layout */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10 place-items-center">
               {GLOBAL_FINALS_BENEFITS.map((benefit, idx) => (
-                <div key={idx} className="flex gap-5 items-start justify-center sm:justify-start text-left sm:text-left">
-                  <div className="mt-1 min-w-[28px] p-1.5 bg-blue-50 rounded-lg text-[#1292B7]">
+                <div key={idx} className="flex flex-col items-center max-w-sm">
+                  <div className="mb-4 w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-[#1292B7]">
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900 mb-2 text-lg">{benefit.title}</h4>
-                    <p className="text-sm text-gray-500 leading-relaxed">{benefit.description}</p>
-                  </div>
+                  <h4 className="font-bold text-gray-900 mb-2 text-lg">{benefit.title}</h4>
+                  <p className="text-sm text-gray-500 leading-relaxed">{benefit.description}</p>
                 </div>
               ))}
             </div>

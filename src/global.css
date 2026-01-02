@@ -1,14 +1,25 @@
 /* ===============================
    EWC Global Marketing System
-   Safe global polish WITHOUT breaking Tailwind transforms
+   Desktop-first, Mobile-optimized
    =============================== */
 
-/* 0) Base font scaling (responsive) */
+/* ===============================
+   0) Base font scaling
+   =============================== */
 html { font-size: 15px; }
-@media (min-width: 1024px) { html { font-size: 15.5px; } }
-@media (max-width: 768px)  { html { font-size: 14px; } }
 
-/* 1) Better readability globally */
+@media (min-width: 1024px) {
+  html { font-size: 15.5px; }
+}
+
+/* 🔴 MOBILE: أصغر بشكل واضح */
+@media (max-width: 768px) {
+  html { font-size: 13px; }
+}
+
+/* ===============================
+   1) Readability
+   =============================== */
 body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -16,10 +27,11 @@ body {
   text-rendering: geometricPrecision;
 }
 
-/* Nicer selection */
 ::selection { background: rgba(18,146,183,0.22); }
 
-/* 2) Heading vs body balance (global) */
+/* ===============================
+   2) Typography balance
+   =============================== */
 .ewc-marketing h1,
 .ewc-marketing h2,
 .ewc-marketing h3 {
@@ -31,34 +43,82 @@ body {
 .ewc-marketing h3 { line-height: 1.2; }
 
 .ewc-marketing p,
-.ewc-marketing li { line-height: 1.7; }
-
-/* Make headings feel more premium */
-.ewc-marketing h1,
-.ewc-marketing h2 {
-  text-wrap: balance;
+.ewc-marketing li {
+  line-height: 1.65;
 }
 
-/* 3) Marketing feel (buttons/links) - SAFE (no transform override) */
+/* ===============================
+   3) MOBILE TYPOGRAPHY REDUCTION
+   =============================== */
+@media (max-width: 768px) {
+
+  /* Headings */
+  .ewc-marketing h1 {
+    font-size: 2.2rem !important;
+    line-height: 1.15;
+  }
+
+  .ewc-marketing h2 {
+    font-size: 1.7rem !important;
+  }
+
+  .ewc-marketing h3 {
+    font-size: 1.25rem !important;
+  }
+
+  /* Body text */
+  .ewc-marketing p {
+    font-size: 0.95rem;
+  }
+
+  .ewc-marketing li {
+    font-size: 0.9rem;
+  }
+}
+
+/* ===============================
+   4) SECTION SPACING (KEY PART)
+   =============================== */
+
+/* Default (desktop) */
+section {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+/* 🔴 MOBILE: أقصر بكثير */
+@media (max-width: 768px) {
+  section {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+}
+
+/* ===============================
+   5) Buttons & CTAs
+   =============================== */
 .ewc-marketing button {
   letter-spacing: 0.01em;
   font-weight: 800;
 }
 
-/* Give hover feel without touching transform */
+/* Mobile buttons smaller */
+@media (max-width: 768px) {
+  .ewc-marketing button {
+    padding: 0.75rem 1.4rem !important;
+    font-size: 0.9rem;
+  }
+}
+
+/* Safe hover feel (NO transform override) */
 .ewc-marketing a:hover,
 .ewc-marketing button:hover {
   filter: brightness(0.98);
 }
 
-/* Reduce repaint issues for animated elements */
-.ewc-marketing button,
-.ewc-marketing a,
-.ewc-marketing img {
-  will-change: auto;
-}
-
-/* Optional: if you use flex list items, keep aligned nicely */
+/* ===============================
+   6) Lists / icons alignment
+   =============================== */
 .ewc-marketing li {
   align-items: flex-start;
 }

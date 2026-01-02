@@ -11,12 +11,12 @@ import { Ident } from './components/Ident';
 import { 
   HERO_CONTENT, VALUE_PROPOSITION, ELIGIBILITY, 
   PRIZE_POOL_TOTAL, PRIZE_TIERS, AI_TRACK_PRIZES, TIMELINE, 
-  GLOBAL_FINALS_BENEFITS, EWC_LOGO, RIYADH_FINALS_IMAGE
+  GLOBAL_FINALS_BENEFITS, HOSTS, EWC_LOGO, RIYADH_FINALS_IMAGE
 } from './constants';
 
 const App = () => {
   return (
-    <div className="min-h-screen flex flex-col font-sans text-[#161616] overflow-x-hidden selection:bg-[#1292B7] selection:text-white">
+    <div className="min-h-screen flex flex-col font-sans text-[#161616] overflow-x-hidden selection:bg-[#1292B7] selection:text-white text-center">
       
       {/* SECTION 1: HERO */}
       <section className="relative min-h-[90vh] flex items-center pt-32 pb-24 overflow-hidden bg-white">
@@ -27,9 +27,9 @@ const App = () => {
         <Ident className="absolute -right-64 -top-64 w-[800px] h-[800px] opacity-[0.03]" />
         
         <div className="container mx-auto px-6 max-w-6xl relative z-10">
-          <div className="max-w-4xl">
-            {/* Logo replaces the text badge */}
-            <div className="mb-10">
+          <div className="max-w-4xl mx-auto">
+            {/* Logo */}
+            <div className="mb-10 flex justify-center">
               <img 
                 src={EWC_LOGO} 
                 alt="Entrepreneurship World Cup" 
@@ -48,18 +48,18 @@ const App = () => {
               {HERO_CONTENT.headline}
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-500 mb-12 max-w-2xl font-light leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-500 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
               {HERO_CONTENT.subheadline}
             </p>
 
-            {/* Credibility Stats - Modernized */}
+            {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-14 py-8 border-y border-gray-100/80">
               {HERO_CONTENT.stats.map((stat, idx) => (
-                <div key={idx} className="flex flex-col group cursor-default">
-                  <span className="text-4xl md:text-5xl font-black brand-gradient-text font-heading mb-2 group-hover:scale-105 transition-transform duration-300 origin-left">
+                <div key={idx} className="flex flex-col group cursor-default items-center">
+                  <span className="text-4xl md:text-5xl font-black brand-gradient-text font-heading mb-2 group-hover:scale-105 transition-transform duration-300">
                     {stat.value}
                   </span>
-                  <div className="flex items-center gap-2 text-gray-500 mt-1">
+                  <div className="flex items-center gap-2 text-gray-500 mt-1 justify-center">
                     <stat.icon size={16} className="text-[#1292B7]" />
                     <span className="text-sm font-bold uppercase tracking-widest text-gray-400">{stat.label}</span>
                   </div>
@@ -67,7 +67,7 @@ const App = () => {
               ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
               <a 
                 href="https://entrepreneurshipworldcup.typeform.com/EWC2026" 
                 target="_blank" 
@@ -96,7 +96,7 @@ const App = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
           {VALUE_PROPOSITION.map((card, idx) => (
             <div key={idx} className="bg-white p-10 rounded-3xl shadow-[0_2px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-2 border border-gray-100/50 group">
-              <div className="w-16 h-16 rounded-2xl bg-blue-50/80 flex items-center justify-center mb-8 group-hover:bg-[#1292B7] group-hover:text-white transition-colors duration-300">
+              <div className="w-16 h-16 rounded-2xl bg-blue-50/80 flex items-center justify-center mb-8 mx-auto group-hover:bg-[#1292B7] group-hover:text-white transition-colors duration-300">
                 <card.icon className="text-[#1292B7] group-hover:text-white h-8 w-8 transition-colors duration-300" />
               </div>
               <h3 className="text-2xl font-bold font-heading mb-4 text-gray-900">
@@ -112,28 +112,26 @@ const App = () => {
 
       {/* SECTION 4: WHO CAN APPLY */}
       <Section className="overflow-hidden">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-          <div className="max-w-2xl">
-            <h2 className="text-3xl md:text-5xl font-bold font-heading mb-6 tracking-tight">
-              Who Can Apply?
-            </h2>
-            <p className="text-xl text-gray-500 font-light leading-relaxed">
-              EWC is open to startups at all stages. No matter where you are in your journey, there is a place for you.
-            </p>
-          </div>
+        <div className="max-w-2xl mx-auto mb-20">
+          <h2 className="text-3xl md:text-5xl font-bold font-heading mb-6 tracking-tight">
+            Who Can Apply?
+          </h2>
+          <p className="text-xl text-gray-500 font-light leading-relaxed">
+            EWC is open to startups at all stages. No matter where you are in your journey, there is a place for you.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {ELIGIBILITY.map((item, idx) => (
             <div key={idx} className="bg-white rounded-3xl p-10 border border-gray-100 shadow-sm hover:shadow-xl hover:border-blue-100 transition-all duration-300 hover:-translate-y-1">
-              <div className="w-14 h-14 rounded-full bg-teal-50 flex items-center justify-center mb-8 text-[#1292B7]">
+              <div className="w-14 h-14 rounded-full bg-teal-50 flex items-center justify-center mb-8 mx-auto text-[#1292B7]">
                 <item.icon size={28} />
               </div>
               <h3 className="text-2xl font-bold font-heading mb-6 text-gray-900">{item.title}</h3>
-              <ul className="space-y-4">
+              <ul className="space-y-4 text-center">
                 {item.criteria.map((criterion, cIdx) => (
-                  <li key={cIdx} className="flex items-start gap-4 text-gray-600 group">
-                    <span className="mt-2 w-2 h-2 rounded-full bg-[#1292B7] flex-shrink-0 group-hover:scale-125 transition-transform" />
+                  <li key={cIdx} className="flex items-start gap-4 text-gray-600 justify-center">
+                    <span className="mt-2 w-2 h-2 rounded-full bg-[#1292B7] flex-shrink-0" />
                     <span className="text-base font-medium leading-relaxed">{criterion}</span>
                   </li>
                 ))}
@@ -226,7 +224,7 @@ const App = () => {
               {TIMELINE.map((event, idx) => (
                 <div key={idx} className={`relative flex flex-col md:flex-row gap-8 items-center ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''} group`}>
                   <div className="w-full md:w-1/2 pl-12 md:pl-0 md:px-12">
-                    <div className={`text-left ${idx % 2 === 0 ? 'md:text-left' : 'md:text-right'} group-hover:-translate-y-1 transition-transform duration-300`}>
+                    <div className="group-hover:-translate-y-1 transition-transform duration-300">
                       <span className="inline-block py-1.5 px-4 rounded-full bg-blue-50 text-[#1292B7] font-bold text-sm mb-3 shadow-sm border border-blue-100">
                         {event.date}
                       </span>
@@ -248,8 +246,9 @@ const App = () => {
       <Section className="relative overflow-hidden" background="gray">
         <div className="absolute top-0 right-0 w-[800px] h-full bg-white skew-x-12 transform translate-x-40 pointer-events-none opacity-50 lg:opacity-100"></div>
         
-        <div className="flex flex-col lg:flex-row items-center gap-20 relative z-10">
-          <div className="lg:w-1/2">
+        <div className="flex flex-col lg:flex-row items-center gap-20 relative z-10 text-center lg:text-left">
+          {/* left column */}
+          <div className="lg:w-1/2 text-center">
             <h2 className="text-3xl md:text-5xl font-bold font-heading mb-8 tracking-tight">
               The Road to Riyadh
             </h2>
@@ -259,7 +258,7 @@ const App = () => {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
               {GLOBAL_FINALS_BENEFITS.map((benefit, idx) => (
-                <div key={idx} className="flex gap-5 items-start">
+                <div key={idx} className="flex gap-5 items-start justify-center sm:justify-start text-left sm:text-left">
                   <div className="mt-1 min-w-[28px] p-1.5 bg-blue-50 rounded-lg text-[#1292B7]">
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
@@ -272,6 +271,7 @@ const App = () => {
             </div>
           </div>
           
+          {/* image column */}
           <div className="lg:w-1/2 relative w-full">
             <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border-[6px] border-white group">
               <img 
@@ -280,9 +280,9 @@ const App = () => {
                 className="w-full h-auto object-cover transform scale-105 group-hover:scale-110 transition-transform duration-700" 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end p-10">
-                <div className="text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                <div className="text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 w-full text-center">
                   <p className="font-bold text-3xl mb-2">EWC Global Finals</p>
-                  <p className="text-base opacity-90 font-light tracking-wide flex items-center gap-2">
+                  <p className="text-base opacity-90 font-light tracking-wide flex items-center justify-center gap-2">
                     <MapPin size={16} />
                     November 2026 | Riyadh, Saudi Arabia
                   </p>
@@ -290,6 +290,7 @@ const App = () => {
               </div>
             </div>
           </div>
+
         </div>
       </Section>
 
@@ -319,10 +320,55 @@ const App = () => {
         </div>
       </section>
 
-      {/* SECTION 9: FOOTER (NO PARTNERS) */}
+      {/* SECTION 9: FOOTER (KEEP: Global Hosts + Founding Partner, REMOVE: Partners) */}
       <footer className="bg-white pt-20 pb-12 border-t border-gray-100">
         <div className="container mx-auto px-6 max-w-6xl">
-          <div className="border-t border-gray-100 pt-10 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-20 text-center">
+            
+            {/* Global Hosts */}
+            <div>
+              <h4 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-8">Global Hosts</h4>
+              <div className="flex flex-col gap-6 items-center">
+                {HOSTS.global.map((host, idx) => (
+                  <img 
+                    key={idx} 
+                    src={host.logo} 
+                    alt={host.name} 
+                    className="h-12 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" 
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      const span = document.createElement('span');
+                      span.innerText = host.name;
+                      span.className = "text-xl font-bold text-gray-900";
+                      e.currentTarget.parentElement?.appendChild(span);
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Founding Partner */}
+            <div>
+              <h4 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-8">Founding Partner</h4>
+              <div className="flex flex-col gap-6 items-center">
+                <img 
+                  src={HOSTS.founding.logo} 
+                  alt={HOSTS.founding.name} 
+                  className="h-14 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" 
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    const span = document.createElement('span');
+                    span.innerText = HOSTS.founding.name;
+                    span.className = "text-xl font-bold text-gray-900";
+                    e.currentTarget.parentElement?.appendChild(span);
+                  }}
+                />
+              </div>
+            </div>
+
+          </div>
+
+          <div className="border-t border-gray-100 pt-10 flex flex-col md:flex-row justify-center items-center text-sm text-gray-400">
             <p>&copy; Entrepreneurship World Cup. All rights reserved.</p>
           </div>
         </div>

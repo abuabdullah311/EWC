@@ -57,7 +57,7 @@ const App = () => {
               />
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-extrabold font-heading leading-[1.1] mb-8 tracking-tight text-gray-900 text-left">
+            <h1 className="text-5xl md:text-6xl font-extrabold font-heading leading-[1.1] mb-8 tracking-tight text-gray-900 text-left">
             {HERO_CONTENT.headline}
             </h1>
 

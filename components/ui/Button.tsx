@@ -1,27 +1,27 @@
-import React from 'react';
+import React from "react";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline';
+  variant?: "primary" | "secondary" | "outline";
   fullWidth?: boolean;
 }
 
 export const Button: React.FC<ButtonProps> = ({
   children,
-  variant = 'primary',
+  variant = "primary",
   fullWidth = false,
-  className = '',
+  className = "",
   ...props
 }) => {
   const baseStyles =
     "inline-flex items-center justify-center px-8 py-3.5 text-base font-bold rounded-full " +
-    "transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2";
+    "transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 " +
+    "active:scale-[0.99]";
 
   const variants = {
     primary:
-      // ✅ gradient ثابت 100% مثل التصميم الأصلي
-      "bg-gradient-to-r from-[#1292B7] to-[#60C9DC] " +
-      "text-white shadow-lg shadow-[#1292B7]/30 " +
-      "hover:opacity-95 hover:shadow-xl " +
+      "bg-gradient-to-r from-[#1292B7] to-[#60C9DC] text-white " +
+      "shadow-lg shadow-[#1292B7]/30 " +
+      "hover:opacity-95 hover:shadow-xl hover:shadow-[#1292B7]/35 " +
       "focus:ring-[#1292B7]/40",
 
     secondary:
@@ -37,9 +37,9 @@ export const Button: React.FC<ButtonProps> = ({
       className={[
         baseStyles,
         variants[variant],
-        fullWidth ? 'w-full' : '',
+        fullWidth ? "w-full" : "",
         className,
-      ].join(' ')}
+      ].join(" ")}
       {...props}
     >
       {children}

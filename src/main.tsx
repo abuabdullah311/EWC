@@ -3,11 +3,6 @@ import ReactDOM from "react-dom/client";
 import App from "../App";
 import "./global.css";
 
-/**
- * ✅ Global Marketing + Typography System
- * - Applies to the entire page without touching components
- * - Safe: DOES NOT override transform (keeps Tailwind hover animations)
- */
 const GlobalEnhancements = () => {
   useEffect(() => {
     document.documentElement.classList.add("ewc-marketing");

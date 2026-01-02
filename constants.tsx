@@ -31,7 +31,7 @@ export const HERO_CONTENT = {
 ====================================================== */
 
 /** Main EWC Logo (Top of page) */
-export const EWC_LOGO = "/assets/logos/EWC_Dark_Grey.png";
+export const EWC_LOGO = "/public/assets/logos/EWC_Dark_Grey.png";
 
 /* ======================================================
    VALUE PROPOSITION

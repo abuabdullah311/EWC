@@ -397,7 +397,7 @@ const App = () => {
           </h2>
 
           <p className="text-sm sm:text-lg md:text-2xl text-gray-400 mb-8 sm:mb-10 md:mb-12 max-w-2xl mx-auto font-light leading-relaxed">
-            Don't look back and wonder "what if?". Look ahead and wonder "what's next?".
+            From local traction to global recognition — this is your moment
           </p>
 
           <a

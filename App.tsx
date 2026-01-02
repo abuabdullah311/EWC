@@ -17,6 +17,7 @@ import {
   RIYADH_FINALS_IMAGE,
 } from "./constants";
 
+
 const App = () => {
   return (
     <div className="min-h-screen flex flex-col font-sans text-[#161616] bg-white selection:bg-[#1292B7] selection:text-white">

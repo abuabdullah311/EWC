@@ -1,130 +1,46 @@
 /* src/global.css */
 
-/* ===============================
-   0) Global scale (mobile-first)
-   =============================== */
 :root {
   --ewc-brand: #1292B7;
   --ewc-brand-2: #60C9DC;
 }
 
-html { font-size: 15px; }
-@media (max-width: 640px) { html { font-size: 14px; } }     /* أصغر للجوال */
-@media (min-width: 1024px) { html { font-size: 15.5px; } }
+/* رفع تباين الرمادي الافتراضي للقراءة (Accessibility) */
+.text-gray-500 { color: #4B5563 !important; } /* تحويله لـ gray-600 فعلياً */
+
+html { font-size: 16px; scroll-behavior: smooth; }
 
 body {
-  line-height: 1.65;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: geometricPrecision;
+  background-color: #fff;
 }
 
-/* nicer selection */
-::selection { background: rgba(18,146,183,0.22); }
-
-/* ===============================
-   1) Typography: crisp + readable
-   =============================== */
-.ewc-marketing h1,
-.ewc-marketing h2,
-.ewc-marketing h3 {
+/* تحسين شكل النصوص في الهيدينج */
+h1, h2, h3 {
+  text-wrap: balance;
   letter-spacing: -0.02em;
 }
 
-.ewc-marketing h1 { line-height: 1.05; }
-.ewc-marketing h2 { line-height: 1.12; }
-.ewc-marketing h3 { line-height: 1.2; }
+/* أنيميشن ناعم للظهور */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-.ewc-marketing p,
-.ewc-marketing li { line-height: 1.7; }
+.animate-in {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
 
-/* Balance big headings without breaking */
-.ewc-marketing h1,
-.ewc-marketing h2 { text-wrap: balance; }
-
-/* ===============================
-   2) Mobile UX: reduce spacing + longness
-   =============================== */
-
-/* Make sections tighter on mobile (safe) */
+/* تحسينات الجوال */
 @media (max-width: 640px) {
-  /* tighten general section padding */
-  .ewc-marketing section { scroll-margin-top: 72px; }
-
-  /* make big paddings smaller without touching every component */
-  .ewc-marketing .ewc-tight-y { padding-top: 56px !important; padding-bottom: 56px !important; }
-  .ewc-marketing .ewc-tight-y-lg { padding-top: 72px !important; padding-bottom: 72px !important; }
-
-  /* reduce heavy blocks */
-  .ewc-marketing .ewc-card-pad { padding: 22px !important; }
-
-  /* make grids less airy */
-  .ewc-marketing .ewc-gap-tight { gap: 14px !important; }
+  section { padding-top: 64px !important; padding-bottom: 64px !important; }
+  .brand-gradient-text { font-size: 3rem !important; }
 }
 
-/* Buttons: stronger presence but stable */
-.ewc-marketing button {
-  letter-spacing: 0.01em;
-  font-weight: 800;
-  transform: translateZ(0);
+/* تدرج الألوان الموحد */
+.brand-gradient-text {
+  background: linear-gradient(135deg, #1292B7 0%, #60C9DC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-
-/* Reduce jumpiness */
-.ewc-marketing button,
-.ewc-marketing a,
-.ewc-marketing img { will-change: transform; }
-
-/* ===============================
-   3) Prize attention: glow + shimmer + pulse
-   =============================== */
-@keyframes ewcPulseGlow {
-  0%, 100% {
-    filter: drop-shadow(0 8px 18px rgba(18,146,183,0.20));
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    filter: drop-shadow(0 14px 32px rgba(18,146,183,0.35));
-    transform: translateY(-2px) scale(1.01);
-  }
-}
-
-@keyframes ewcShimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-/* Apply to the $1,000,000 element (we’ll add class in App) */
-.ewc-prize-amount {
-  position: relative;
-  animation: ewcPulseGlow 2.6s ease-in-out infinite;
-}
-
-/* shimmer overlay */
-.ewc-prize-amount::after {
-  content: "";
-  position: absolute;
-  inset: -6px;
-  background: linear-gradient(
-    90deg,
-    rgba(255,255,255,0) 0%,
-    rgba(255,255,255,0.30) 25%,
-    rgba(255,255,255,0) 55%
-  );
-  background-size: 220% 100%;
-  animation: ewcShimmer 2.4s linear infinite;
-  pointer-events: none;
-  border-radius: 18px;
-  mix-blend-mode: overlay;
-  opacity: 0.75;
-}
-
-/* ===============================
-   4) Optional: smooth hover micro-interactions
-   =============================== */
-.ewc-marketing a:hover button,
-.ewc-marketing button:hover {
-  transform: translateY(-1px);
-}
-
-/* Better list alignment when using flex bullets */
-.ewc-marketing li { align-items: flex-start; }

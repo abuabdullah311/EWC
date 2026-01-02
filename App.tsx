@@ -9,7 +9,7 @@ import { Ident } from './components/Ident';
 import { 
   HERO_CONTENT, VALUE_PROPOSITION, ELIGIBILITY, 
   PRIZE_POOL_TOTAL, PRIZE_TIERS, AI_TRACK_PRIZES, TIMELINE, 
-  GLOBAL_FINALS_BENEFITS, HOSTS, EWC_LOGO
+  GLOBAL_FINALS_BENEFITS, HOSTS, EWC_LOGO, RIYADH_FINALS_IMAGE
 } from './constants';
 
 const App = () => {
@@ -34,7 +34,6 @@ const App = () => {
                 className="h-16 md:h-20 w-auto object-contain"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
-                  // Fallback to text if image fails
                   const span = document.createElement('span');
                   span.className = "inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white border border-blue-100 shadow-sm backdrop-blur-sm";
                   span.innerHTML = '<span class="brand-gradient-text font-bold text-sm tracking-wide uppercase">Entrepreneurship World Cup</span>';
@@ -219,14 +218,11 @@ const App = () => {
           </h2>
           
           <div className="relative">
-            {/* Vertical Line */}
             <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-100 transform md:-translate-x-1/2"></div>
 
             <div className="space-y-16">
               {TIMELINE.map((event, idx) => (
                 <div key={idx} className={`relative flex flex-col md:flex-row gap-8 items-center ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''} group`}>
-                  
-                  {/* Content Side */}
                   <div className="w-full md:w-1/2 pl-12 md:pl-0 md:px-12">
                     <div className={`text-left ${idx % 2 === 0 ? 'md:text-left' : 'md:text-right'} group-hover:-translate-y-1 transition-transform duration-300`}>
                       <span className="inline-block py-1.5 px-4 rounded-full bg-blue-50 text-[#1292B7] font-bold text-sm mb-3 shadow-sm border border-blue-100">
@@ -237,10 +233,7 @@ const App = () => {
                     </div>
                   </div>
 
-                  {/* Center Dot */}
                   <div className="absolute left-4 md:left-1/2 w-5 h-5 bg-white border-[5px] border-[#1292B7] rounded-full transform -translate-x-1/2 z-10 shadow-[0_0_0_4px_rgba(255,255,255,1)] group-hover:scale-125 transition-transform duration-300"></div>
-                  
-                  {/* Empty Side for layout balance */}
                   <div className="hidden md:block w-1/2"></div>
                 </div>
               ))}
@@ -251,7 +244,6 @@ const App = () => {
 
       {/* SECTION 7: GLOBAL FINALS VALUE */}
       <Section className="relative overflow-hidden" background="gray">
-        {/* Abstract shapes */}
         <div className="absolute top-0 right-0 w-[800px] h-full bg-white skew-x-12 transform translate-x-40 pointer-events-none opacity-50 lg:opacity-100"></div>
         
         <div className="flex flex-col lg:flex-row items-center gap-20 relative z-10">
@@ -279,23 +271,23 @@ const App = () => {
           </div>
           
           <div className="lg:w-1/2 relative w-full">
-             <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border-[6px] border-white group">
-               {/* Riyadh Event Image */}
-               <img 
-                 src="https://images.unsplash.com/photo-1586724237569-f3d0c1dee8c6?q=80&w=1000&auto=format&fit=crop" 
-                 alt="EWC Global Finals in Riyadh" 
-                 className="w-full h-auto object-cover transform scale-105 group-hover:scale-110 transition-transform duration-700" 
-               />
-               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end p-10">
-                 <div className="text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                   <p className="font-bold text-3xl mb-2">EWC Global Finals</p>
-                   <p className="text-base opacity-90 font-light tracking-wide flex items-center gap-2">
-                      <MapPin size={16} />
-                      November 2026 | Riyadh, Saudi Arabia
-                   </p>
-                 </div>
-               </div>
-             </div>
+            <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border-[6px] border-white group">
+              {/* Riyadh Event Image (NOW FROM CONSTANTS) */}
+              <img 
+                src={RIYADH_FINALS_IMAGE}
+                alt="EWC Global Finals in Riyadh" 
+                className="w-full h-auto object-cover transform scale-105 group-hover:scale-110 transition-transform duration-700" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end p-10">
+                <div className="text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                  <p className="font-bold text-3xl mb-2">EWC Global Finals</p>
+                  <p className="text-base opacity-90 font-light tracking-wide flex items-center gap-2">
+                    <MapPin size={16} />
+                    November 2026 | Riyadh, Saudi Arabia
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </Section>
@@ -329,27 +321,25 @@ const App = () => {
       {/* SECTION 9: FOOTER */}
       <footer className="bg-white pt-20 pb-12 border-t border-gray-100">
         <div className="container mx-auto px-6 max-w-6xl">
-          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-20 text-center md:text-left">
             {/* Global Hosts */}
             <div>
               <h4 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-8">Global Hosts</h4>
               <div className="flex flex-col gap-6 items-center md:items-start">
                 {HOSTS.global.map((host, idx) => (
-                   <img 
-                     key={idx} 
-                     src={host.logo} 
-                     alt={host.name} 
-                     className="h-12 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" 
-                     onError={(e) => {
-                       e.currentTarget.style.display = 'none';
-                       // Fallback to text if image fails
-                       const span = document.createElement('span');
-                       span.innerText = host.name;
-                       span.className = "text-xl font-bold text-gray-900";
-                       e.currentTarget.parentElement?.appendChild(span);
-                     }}
-                   />
+                  <img 
+                    key={idx} 
+                    src={host.logo} 
+                    alt={host.name} 
+                    className="h-12 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" 
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      const span = document.createElement('span');
+                      span.innerText = host.name;
+                      span.className = "text-xl font-bold text-gray-900";
+                      e.currentTarget.parentElement?.appendChild(span);
+                    }}
+                  />
                 ))}
               </div>
             </div>
@@ -370,13 +360,13 @@ const App = () => {
                   src={HOSTS.founding.logo} 
                   alt={HOSTS.founding.name} 
                   className="h-14 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" 
-                   onError={(e) => {
-                       e.currentTarget.style.display = 'none';
-                       const span = document.createElement('span');
-                       span.innerText = HOSTS.founding.name;
-                       span.className = "text-xl font-bold text-gray-900";
-                       e.currentTarget.parentElement?.appendChild(span);
-                   }}
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    const span = document.createElement('span');
+                    span.innerText = HOSTS.founding.name;
+                    span.className = "text-xl font-bold text-gray-900";
+                    e.currentTarget.parentElement?.appendChild(span);
+                  }}
                 />
               </div>
             </div>

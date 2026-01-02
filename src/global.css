@@ -1,36 +1,29 @@
-/* ===============================
-   EWC Global Marketing System
-   Desktop-first, Mobile-optimized
-   =============================== */
+/* src/global.css */
 
 /* ===============================
-   0) Base font scaling
+   0) Global scale (mobile-first)
    =============================== */
+:root {
+  --ewc-brand: #1292B7;
+  --ewc-brand-2: #60C9DC;
+}
+
 html { font-size: 15px; }
+@media (max-width: 640px) { html { font-size: 14px; } }     /* أصغر للجوال */
+@media (min-width: 1024px) { html { font-size: 15.5px; } }
 
-@media (min-width: 1024px) {
-  html { font-size: 15.5px; }
-}
-
-/* 🔴 MOBILE: أصغر بشكل واضح */
-@media (max-width: 768px) {
-  html { font-size: 13px; }
-}
-
-/* ===============================
-   1) Readability
-   =============================== */
 body {
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: geometricPrecision;
 }
 
+/* nicer selection */
 ::selection { background: rgba(18,146,183,0.22); }
 
 /* ===============================
-   2) Typography balance
+   1) Typography: crisp + readable
    =============================== */
 .ewc-marketing h1,
 .ewc-marketing h2,
@@ -43,82 +36,95 @@ body {
 .ewc-marketing h3 { line-height: 1.2; }
 
 .ewc-marketing p,
-.ewc-marketing li {
-  line-height: 1.65;
-}
+.ewc-marketing li { line-height: 1.7; }
+
+/* Balance big headings without breaking */
+.ewc-marketing h1,
+.ewc-marketing h2 { text-wrap: balance; }
 
 /* ===============================
-   3) MOBILE TYPOGRAPHY REDUCTION
-   =============================== */
-@media (max-width: 768px) {
-
-  /* Headings */
-  .ewc-marketing h1 {
-    font-size: 2.2rem !important;
-    line-height: 1.15;
-  }
-
-  .ewc-marketing h2 {
-    font-size: 1.7rem !important;
-  }
-
-  .ewc-marketing h3 {
-    font-size: 1.25rem !important;
-  }
-
-  /* Body text */
-  .ewc-marketing p {
-    font-size: 0.95rem;
-  }
-
-  .ewc-marketing li {
-    font-size: 0.9rem;
-  }
-}
-
-/* ===============================
-   4) SECTION SPACING (KEY PART)
+   2) Mobile UX: reduce spacing + longness
    =============================== */
 
-/* Default (desktop) */
-section {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+/* Make sections tighter on mobile (safe) */
+@media (max-width: 640px) {
+  /* tighten general section padding */
+  .ewc-marketing section { scroll-margin-top: 72px; }
+
+  /* make big paddings smaller without touching every component */
+  .ewc-marketing .ewc-tight-y { padding-top: 56px !important; padding-bottom: 56px !important; }
+  .ewc-marketing .ewc-tight-y-lg { padding-top: 72px !important; padding-bottom: 72px !important; }
+
+  /* reduce heavy blocks */
+  .ewc-marketing .ewc-card-pad { padding: 22px !important; }
+
+  /* make grids less airy */
+  .ewc-marketing .ewc-gap-tight { gap: 14px !important; }
 }
 
-/* 🔴 MOBILE: أقصر بكثير */
-@media (max-width: 768px) {
-  section {
-    padding-top: 3.5rem !important;
-    padding-bottom: 3.5rem !important;
-  }
-}
-
-/* ===============================
-   5) Buttons & CTAs
-   =============================== */
+/* Buttons: stronger presence but stable */
 .ewc-marketing button {
   letter-spacing: 0.01em;
   font-weight: 800;
+  transform: translateZ(0);
 }
 
-/* Mobile buttons smaller */
-@media (max-width: 768px) {
-  .ewc-marketing button {
-    padding: 0.75rem 1.4rem !important;
-    font-size: 0.9rem;
+/* Reduce jumpiness */
+.ewc-marketing button,
+.ewc-marketing a,
+.ewc-marketing img { will-change: transform; }
+
+/* ===============================
+   3) Prize attention: glow + shimmer + pulse
+   =============================== */
+@keyframes ewcPulseGlow {
+  0%, 100% {
+    filter: drop-shadow(0 8px 18px rgba(18,146,183,0.20));
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 14px 32px rgba(18,146,183,0.35));
+    transform: translateY(-2px) scale(1.01);
   }
 }
 
-/* Safe hover feel (NO transform override) */
-.ewc-marketing a:hover,
-.ewc-marketing button:hover {
-  filter: brightness(0.98);
+@keyframes ewcShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Apply to the $1,000,000 element (we’ll add class in App) */
+.ewc-prize-amount {
+  position: relative;
+  animation: ewcPulseGlow 2.6s ease-in-out infinite;
+}
+
+/* shimmer overlay */
+.ewc-prize-amount::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.30) 25%,
+    rgba(255,255,255,0) 55%
+  );
+  background-size: 220% 100%;
+  animation: ewcShimmer 2.4s linear infinite;
+  pointer-events: none;
+  border-radius: 18px;
+  mix-blend-mode: overlay;
+  opacity: 0.75;
 }
 
 /* ===============================
-   6) Lists / icons alignment
+   4) Optional: smooth hover micro-interactions
    =============================== */
-.ewc-marketing li {
-  align-items: flex-start;
+.ewc-marketing a:hover button,
+.ewc-marketing button:hover {
+  transform: translateY(-1px);
 }
+
+/* Better list alignment when using flex bullets */
+.ewc-marketing li { align-items: flex-start; }

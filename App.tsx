@@ -32,7 +32,7 @@ const App = () => {
 
         <div className="container mx-auto px-5 sm:px-6 max-w-6xl relative z-10">
           <div className="max-w-4xl">
-            {/* Logo (LEFT) */}
+            {/* ✅ Logo (LEFT) */}
             <div className="mb-8 md:mb-10">
               <img
                 src={EWC_LOGO}
@@ -50,19 +50,20 @@ const App = () => {
               />
             </div>
 
-            {/* Headline (LEFT) */}
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold font-heading leading-[1.08] mb-5 md:mb-8 tracking-tight text-gray-900">
+            {/* ✅ Headline (LEFT) */}
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold font-heading leading-[1.08] mb-5 md:mb-8 tracking-tight text-gray-900 text-left">
               {HERO_CONTENT.headline}
             </h1>
 
-            <p className="text-base sm:text-lg md:text-2xl text-gray-500 mb-8 md:mb-12 max-w-2xl font-light leading-relaxed">
+            {/* Subheadline (keep readable + aligned left for consistency) */}
+            <p className="text-base sm:text-lg md:text-2xl text-gray-500 mb-8 md:mb-12 max-w-2xl font-light leading-relaxed text-left">
               {HERO_CONTENT.subheadline}
             </p>
 
-            {/* Stats (more compact on mobile) */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 md:mb-14 py-6 md:py-8 border-y border-gray-100/80 ewc-gap-tight">
+            {/* Stats (NOT centered globally) */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 md:mb-14 py-6 md:py-8 border-y border-gray-100/80">
               {HERO_CONTENT.stats.map((stat, idx) => (
-                <div key={idx} className="flex flex-col group cursor-default">
+                <div key={idx} className="flex flex-col group cursor-default text-left">
                   <span className="text-3xl sm:text-4xl md:text-5xl font-black brand-gradient-text font-heading mb-1 sm:mb-2 group-hover:scale-105 transition-transform duration-300 origin-left">
                     {stat.value}
                   </span>
@@ -76,7 +77,8 @@ const App = () => {
               ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-start sm:items-center">
+            {/* CTA (button can be left on desktop, full width on mobile) */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-start">
               <a
                 href="https://entrepreneurshipworldcup.typeform.com/EWC2026"
                 target="_blank"
@@ -95,11 +97,12 @@ const App = () => {
 
       {/* SECTION 2: VALUE PROPOSITION */}
       <Section background="gray" id="benefits" className="relative ewc-tight-y">
-        <div className="mb-10 sm:mb-16">
+        {/* ✅ this header intentionally centered only here */}
+        <div className="mb-10 sm:mb-16 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold font-heading mb-4 sm:mb-6 tracking-tight">
             Why Participate?
           </h2>
-          <div className="w-16 sm:w-24 h-1.5 brand-gradient rounded-full opacity-80" />
+          <div className="w-16 sm:w-24 h-1.5 brand-gradient mx-auto rounded-full opacity-80" />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 relative z-10 ewc-gap-tight">
@@ -108,13 +111,14 @@ const App = () => {
               key={idx}
               className="bg-white rounded-3xl shadow-[0_2px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 border border-gray-100/50 group ewc-card-pad p-8 md:p-10"
             >
-              <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-blue-50/80 flex items-center justify-center mb-6 md:mb-8 group-hover:bg-[#1292B7] group-hover:text-white transition-colors duration-300">
+              {/* icon centered inside card (micro-interaction restored) */}
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-blue-50/80 flex items-center justify-center mb-6 md:mb-8 mx-auto group-hover:bg-[#1292B7] transition-colors duration-300">
                 <card.icon className="text-[#1292B7] group-hover:text-white h-7 w-7 md:h-8 md:w-8 transition-colors duration-300" />
               </div>
-              <h3 className="text-xl md:text-2xl font-bold font-heading mb-3 md:mb-4 text-gray-900">
+              <h3 className="text-xl md:text-2xl font-bold font-heading mb-3 md:mb-4 text-gray-900 text-center">
                 {card.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed text-base md:text-lg">
+              <p className="text-gray-600 leading-relaxed text-base md:text-lg text-center">
                 {card.description}
               </p>
             </div>
@@ -124,7 +128,8 @@ const App = () => {
 
       {/* SECTION 4: WHO CAN APPLY */}
       <Section className="overflow-hidden ewc-tight-y">
-        <div className="max-w-2xl mb-10 sm:mb-16">
+        {/* Title + intro centered is fine */}
+        <div className="max-w-2xl mb-10 sm:mb-16 text-center mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold font-heading mb-4 sm:mb-6 tracking-tight">
             Who Can Apply?
           </h2>
@@ -139,16 +144,16 @@ const App = () => {
               key={idx}
               className="bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-blue-100 transition-all duration-300 hover:-translate-y-1 p-8 md:p-10 ewc-card-pad"
             >
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-teal-50 flex items-center justify-center mb-6 md:mb-8 text-[#1292B7]">
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-teal-50 flex items-center justify-center mb-6 md:mb-8 mx-auto text-[#1292B7]">
                 <item.icon size={26} />
               </div>
 
-              <h3 className="text-xl md:text-2xl font-bold font-heading mb-5 md:mb-6 text-gray-900">
+              <h3 className="text-xl md:text-2xl font-bold font-heading mb-5 md:mb-6 text-gray-900 text-center">
                 {item.title}
               </h3>
 
-              {/* LEFT-ALIGNED bullets (as requested earlier) */}
-              <ul className="space-y-3 md:space-y-4">
+              {/* ✅ Requested: LEFT aligned list items */}
+              <ul className="space-y-3 md:space-y-4 text-left">
                 {item.criteria.map((criterion, cIdx) => (
                   <li key={cIdx} className="flex items-start gap-3 text-gray-600">
                     <span className="mt-2 w-2 h-2 rounded-full bg-[#1292B7] flex-shrink-0" />
@@ -167,7 +172,7 @@ const App = () => {
       <Section background="gray" className="relative ewc-tight-y-lg">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-50/40 via-transparent to-transparent pointer-events-none" />
 
-        {/* Prize Header (attention-grabbing) */}
+        {/* Prize header centered intentionally */}
         <div className="relative mb-10 sm:mb-16 md:mb-24">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-200/30 via-teal-100/30 to-blue-200/30 blur-[100px] rounded-full transform -translate-y-1/2" />
           <div className="relative text-center z-10 bg-white/60 backdrop-blur-xl rounded-[2.2rem] md:rounded-[3rem] p-10 sm:p-12 md:p-16 border border-white/50 shadow-2xl max-w-5xl mx-auto ring-1 ring-gray-900/5">
@@ -175,7 +180,7 @@ const App = () => {
               Global Reward
             </span>
 
-            {/* ✅ Animated prize amount */}
+            {/* ✅ keep your animated class from global.css */}
             <h2 className="ewc-prize-amount text-5xl sm:text-6xl md:text-9xl font-black font-heading mb-4 sm:mb-6 brand-gradient-text drop-shadow-sm tracking-tight">
               {PRIZE_POOL_TOTAL}
             </h2>
@@ -186,7 +191,9 @@ const App = () => {
 
             <div className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-[#E6F4F1] text-[#0F5A4F] shadow-sm border border-[#0F5A4F]/10 hover:bg-[#D4EBE7] transition-colors">
               <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6" />
-              <span className="font-bold tracking-wider uppercase text-sm sm:text-base">100% Equity Free</span>
+              <span className="font-bold tracking-wider uppercase text-sm sm:text-base">
+                100% Equity Free
+              </span>
             </div>
           </div>
         </div>
@@ -200,7 +207,7 @@ const App = () => {
             >
               <div className="h-2 w-full brand-gradient absolute top-0 left-0" />
               <div className="p-8 md:p-10">
-                <h3 className="text-xl md:text-2xl font-bold font-heading mb-6 md:mb-8 text-gray-900">
+                <h3 className="text-xl md:text-2xl font-bold font-heading mb-6 md:mb-8 text-gray-900 text-center">
                   {tier.stage}
                 </h3>
                 <div className="space-y-4 md:space-y-6">
@@ -228,12 +235,12 @@ const App = () => {
           ))}
         </div>
 
-        {/* AI tracks (kept, but tighter) */}
+        {/* AI tracks (centered content OK) */}
         <div className="bg-gradient-to-br from-[#1292B7] to-[#0a6c8a] rounded-3xl p-8 sm:p-10 md:p-14 text-white shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-400/20 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
 
-          <div className="relative z-10">
+          <div className="relative z-10 text-center">
             <div className="mb-8 md:mb-12">
               <h3 className="text-2xl md:text-3xl font-bold font-heading mb-2 md:mb-3">
                 AI Sub-Tracks
@@ -249,7 +256,7 @@ const App = () => {
                   key={idx}
                   className="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-[1.02]"
                 >
-                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/20 flex items-center justify-center mb-4 md:mb-6 text-white shadow-inner">
+                  <div className="mx-auto w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/20 flex items-center justify-center mb-4 md:mb-6 text-white shadow-inner">
                     <track.icon size={22} />
                   </div>
                   <h4 className="font-bold text-sm mb-2 md:mb-3 text-white/90 leading-tight">
@@ -265,10 +272,10 @@ const App = () => {
         </div>
       </Section>
 
-      {/* SECTION 6: TIMELINE (tighter on mobile) */}
+      {/* SECTION 6: TIMELINE */}
       <Section id="timeline" className="ewc-tight-y">
-        <div className="max-w-5xl">
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold font-heading mb-8 sm:mb-12 md:mb-16 tracking-tight">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold font-heading mb-8 sm:mb-12 md:mb-16 tracking-tight text-center">
             EWC 2026 Timeline
           </h2>
 
@@ -361,15 +368,15 @@ const App = () => {
         </div>
       </Section>
 
-      {/* SECTION 8: FINAL CTA */}
+      {/* SECTION 8: FINAL CTA (centered intentionally) */}
       <section className="py-20 sm:py-24 md:py-32 bg-[#111] text-white relative overflow-hidden">
         <Ident className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] md:w-[1200px] md:h-[1200px] opacity-10" />
 
-        <div className="container mx-auto px-5 sm:px-6 relative z-10 max-w-4xl">
+        <div className="container mx-auto px-5 sm:px-6 relative z-10 max-w-4xl text-center">
           <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold font-heading mb-4 sm:mb-6 md:mb-8 tracking-tight">
             It's time to shine.
           </h2>
-          <p className="text-sm sm:text-lg md:text-2xl text-gray-400 mb-8 sm:mb-10 md:mb-12 max-w-2xl font-light leading-relaxed">
+          <p className="text-sm sm:text-lg md:text-2xl text-gray-400 mb-8 sm:mb-10 md:mb-12 max-w-2xl mx-auto font-light leading-relaxed">
             Don't look back and wonder "what if?". Look ahead and wonder "what's next?".
           </p>
 
@@ -385,15 +392,17 @@ const App = () => {
         </div>
       </section>
 
-      {/* FOOTER (Global Hosts: logos side-by-side + Founding Partner) */}
+      {/* FOOTER: Global Hosts + Founding Partner (logos side-by-side) */}
       <footer className="bg-white pt-14 sm:pt-16 md:pt-20 pb-10 md:pb-12 border-t border-gray-100">
         <div className="container mx-auto px-5 sm:px-6 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 mb-12 md:mb-20">
-            {/* Global Hosts (side-by-side) */}
+            {/* Global Hosts */}
             <div>
               <h4 className="text-[11px] sm:text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-6 md:mb-8">
                 Global Hosts
               </h4>
+
+              {/* ✅ side-by-side same level */}
               <div className="flex items-center gap-10 justify-start flex-wrap">
                 {HOSTS.global.map((host, idx) => (
                   <img
@@ -418,6 +427,7 @@ const App = () => {
               <h4 className="text-[11px] sm:text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-6 md:mb-8">
                 Founding Partner
               </h4>
+
               <div className="flex items-center justify-start">
                 <img
                   src={HOSTS.founding.logo}
